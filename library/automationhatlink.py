@@ -82,7 +82,7 @@ else:
     fatal("automationHAT/automationPHAT not detected")
 
 running = True
-threshold = 0.01;
+threshold = 0.01
 
 stdin = NonBlockingStreamReader(sys.stdin)
 

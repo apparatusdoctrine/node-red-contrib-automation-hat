@@ -1,0 +1,77 @@
+<!--
+  Copyright 2018 Martin Rowan <martin@rowannet.co.uk>
+  Derived from an initial implementation for the Explorer HAT Copyright 2016 Pimoroni Ltd
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<script type="text/x-red" data-template-name="rpi-automation-hat-relay">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-relayNumber"><i class="fa fa fa-wrench"></i> Relay</label>
+        <select type="text" id="node-input-relayNumber" style="width: 50px;">
+            <option value="one" selected="selected">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label>&nbsp;</label>
+        <input type="checkbox" id="node-input-auto_light" placeholder="" style="display: inline-block; width: auto; vertical-align: top;" checked>
+        <label for="node-input-auto_light" style="width: 70%;">Indicator Lights</label>
+    </div>
+</script>
+<script type="text/x-red" data-help-name="rpi-automation-hat-relay">
+    <p>Raspberry Pi Automation HAT relay node.</p>
+    <p>This node will toggle the configured relay output based on the <code>msg.payload</code> (1 or 0)</p>
+    <br>
+    <img src="https://raw.githubusercontent.com/shortbloke/node-red-contrib-automation-hat/master/images/Automation_HAT_1_of_3_1024x1024.jpg" />
+    <h3>Inputs</h3>
+        <dl class="message-properties">
+            <dt>payload
+                <span class="property-type">number | string | boolean</span>
+            </dt>the payload will be a 1 or a 0 (or true or false)
+        </dl>
+    <!-- <h3>Details</h3> -->
+</script>
+<script type="text/javascript">
+
+    RED.nodes.registerType('rpi-automation-hat-relay', {
+        category: 'Raspberry Pi',
+        defaults: {
+            name: {
+                value: ''
+            },
+            relayNumber:  {
+                value: 'one',
+                required: true
+            },
+            auto_light: {
+                value: 1,
+                required: true,
+                validate: RED.validators.number()
+            }
+        },
+        color: '#a6bbcf',
+        paletteLabel: 'Automation HAT Relay',
+        inputs: 1,
+        outputs: 0,
+        icon: 'serial.png',
+        align: 'right',
+        label: function(){
+            return this.name || 'Automation HAT Relay';
+        },
+    });
+</script>

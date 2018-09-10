@@ -8,6 +8,8 @@
     },
     "keywords": [
         "node-red",
+        "automation-hat",
+        "automation-phat",
         "Automation HAT",
         "Automation pHAT",
         "pimoroni",
@@ -17,7 +19,9 @@
     "node-red": {
         "version": ">=0.13.0",
         "nodes": {
-            "automation-hat-generic": "nodes/rpi-automationhat.js"
+            "automation-hat-generic": "nodes/rpi-automationhat.js",
+            "rpi-automation-hat-led-relays": "nodes/relays.js",
+            "rpi-automation-hat-led": "nodes/leds.js"
         }
     },
     "author": "Martin Rowan <martin@rowannet.co.uk>",
